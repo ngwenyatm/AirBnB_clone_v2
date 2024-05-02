@@ -10,7 +10,8 @@ class City(BaseModel):
     """ The city class, contains state ID and name """
     if models.storage_type =="db":
         __tablename__ = "cities"
-        state_id = Column(String(60), ForeignKey("states.id"), nullable=False
-
-    state_id = ""
-    name = ""
+        state_id = Column(String(60), ForeignKey("states.id"), nullable=False)
+        name = Column(String(128), ForeignKey("states.id"), nullable=False)
+    else:
+        state_id = ""
+        name = ""
