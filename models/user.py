@@ -6,7 +6,7 @@ from sqlalchemy.orm import backref, relationship
 from sqlalchemy import Column, String
 
 
-class User(BaseModel):
+class User(BaseModel,Base):
     """This class defines a user by various attributes"""
     if models.storage_type == 'db':
         __tablename__ = 'users'
