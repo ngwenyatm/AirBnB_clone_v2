@@ -5,15 +5,15 @@ from fabric.api import local
 from os.path import isdir
 
 def do_pack():
-    """ """
+  """
+  This function creates a tar.gz archive of the contents of the web_static directory.
 
-    try:
-        curr_date = datetime.now().strftime("%Y%m%d%H%M%S")
-        if isdir("versions") is False:
-            local("mkdir versions")
-        file_ = "versions/web_static_{}.tgz".format(curr_date)
-        local("tar -cvzf {} web_static".format(file_))
-        return file_
-    except:
-        pass
-        return None
+  Returns:
+      str: The path to the created archive file, or None if there was an error.
+  """
+  now = datetime.now()
+  filename = os.path.join("web_static_", "{:%Y%m%d%H%M%S}.tgz".format(now))
+  run("mkdir -p versions", warn=True)
+  archive_path = os.path.join("versions", filename)
+  run(f"tar -cvzf {archive_path} web_static")
+  return archive_path
