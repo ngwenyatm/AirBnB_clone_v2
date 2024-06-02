@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -14,7 +13,7 @@ def display_hbnb():
 @app.route("/c/<text>", strict_slashes=False)
 def display_text(text):
     text = text.replace("_", " ")
-    return f"C {text}"
+    return "C {}".format(text.replace("_", " "))
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
