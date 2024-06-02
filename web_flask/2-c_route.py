@@ -1,21 +1,25 @@
 #!/usr/bin/python3
-from flask import Flask, render_template
+"""
+start Flask web application
+"""
 
+from flask import Flask
 app = Flask(__name__)
 
-@app.route("/", strict_slashes=False)
-def hello_hbnb():
-    return "Hello HBNB!"
 
-@app.route("/hbnb", strict_slashes=False)
-def display_hbnb():
-    return "HBNB"
+@app.route('/', strict_slashes=False)
+def index():
+    return 'Hello HBNB!'
 
-@app.route("/c/<text>", strict_slashes=False)
-def display_text(text):
-    text = text.replace("_", " ")
-    return "C {}".format(text.replace("_", " "))
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+@app.route('/hbnb', strict_slashes=False)
+def hbnb():
+    return 'HBNB'
 
+
+@app.route('/c/<text>', strict_slashes=False)
+def cisfun(text):
+    return 'C' +' '+ text.replace('_', ' ')
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port='5000')
