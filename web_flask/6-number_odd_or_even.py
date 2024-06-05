@@ -38,7 +38,7 @@ def template_ren(n):
     return render_template('5-number.html', num=n)
 
 @app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
-def numbersandevenness(n):
+def eveorodd(n):
     """display a HTML page + even/odd"""
     if (n % 2 == 0):
         eveorodd = 'even'
